@@ -1,0 +1,11 @@
+hs_err_pid*
+replay_pid*
+nbproject/private/
+/build/
+/test/
+/dist/
+*.properties
+!JARs/jcalendar-1.4.jar
+!JARs/mariadb-java-client-3.0.11.jar
+!nbproject/genfiles.properties
+!nbproject/project.properties
