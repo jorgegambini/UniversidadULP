@@ -44,6 +44,7 @@ public class Main extends javax.swing.JFrame {
 
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,49 +194,42 @@ public class Main extends javax.swing.JFrame {
 
     private void menuAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlumnoActionPerformed
 
-        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        ABMAlumnos frmAlumnos = new ABMAlumnos();
+        centrarInternalFrame(frmAlumnos);
+        frmAlumnos.setVisible(true);
+        addInternalFrameListener(frmAlumnos);
+        jDesktopPane1.add(frmAlumnos);
+        jDesktopPane1.moveToFront(frmAlumnos);
 
     }//GEN-LAST:event_menuAlumnoActionPerformed
 
     private void menuInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInscripcionActionPerformed
 
-        
-
     }//GEN-LAST:event_menuInscripcionActionPerformed
 
     private void menuMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMateriaActionPerformed
-
-        
 
     }//GEN-LAST:event_menuMateriaActionPerformed
 
     private void menuNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNotasActionPerformed
 
-        
-
     }//GEN-LAST:event_menuNotasActionPerformed
 
     private void menuConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaActionPerformed
-
-       
 
     }//GEN-LAST:event_menuConsultaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        
-
     }//GEN-LAST:event_formWindowOpened
 
     private void menuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioActionPerformed
 
-        
-
     }//GEN-LAST:event_menuUsuarioActionPerformed
 
     private void menuOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcionesActionPerformed
-
-        
 
     }//GEN-LAST:event_menuOpcionesActionPerformed
 
@@ -244,6 +238,7 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
 
     }//GEN-LAST:event_menuSalirMouseClicked
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
