@@ -1,14 +1,11 @@
 package universidadulp.vistas;
 
 import java.awt.Dimension;
-import java.sql.Connection;
-import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import static universidadulp.connection.DatabaseConnection.getInstance;
 import universidadulp.entidades.TipoUsuario;
 import universidadulp.entidades.Usuario;
 import universidadulp.repositorio.TipoUsuarioRepositorio;
@@ -32,6 +29,7 @@ public class Main extends javax.swing.JFrame {
         setSize(1280, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/icon/logo1.png")).getImage());
 
     }
 
@@ -206,8 +204,14 @@ public class Main extends javax.swing.JFrame {
 
     private void menuInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInscripcionActionPerformed
 
-       
-        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        ABMInscripcion frmInscripcion = new ABMInscripcion();
+        centrarInternalFrame(frmInscripcion);
+        frmInscripcion.setVisible(true);
+        jDesktopPane1.add(frmInscripcion);
+        jDesktopPane1.moveToFront(frmInscripcion);
+
     }//GEN-LAST:event_menuInscripcionActionPerformed
 
     private void menuMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMateriaActionPerformed
@@ -224,7 +228,13 @@ public class Main extends javax.swing.JFrame {
 
     private void menuNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNotasActionPerformed
 
-        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        CargaNotas frmNotas = new CargaNotas();
+        centrarInternalFrame(frmNotas);
+        frmNotas.setVisible(true);
+        jDesktopPane1.add(frmNotas);
+        jDesktopPane1.moveToFront(frmNotas);
 
     }//GEN-LAST:event_menuNotasActionPerformed
 
@@ -254,7 +264,7 @@ public class Main extends javax.swing.JFrame {
 
     private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
 
-        System.exit(0);
+        if (menuSalir.isEnabled()) System.exit(0);
 
     }//GEN-LAST:event_menuSalirMouseClicked
 
