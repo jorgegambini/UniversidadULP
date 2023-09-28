@@ -200,7 +200,7 @@ public class ABMInscripcion extends javax.swing.JInternalFrame {
 
                     if (nota > 0) {
 
-                        if (JOptionPane.showConfirmDialog(null, "La inscripcion posee Nota de " + nota + ". Anula?", "Anular Inscripcion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+                        if (JOptionPane.showConfirmDialog(null, "La inscripcion posee Nota de " + nota + ". Anula?", "Anular Inscripcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
                             eliminarInscripcion(valueId, row);
 

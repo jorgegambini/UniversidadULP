@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import static universidadulp.connection.DatabaseConnection.getInstance;
@@ -84,7 +85,9 @@ public class Main extends javax.swing.JFrame implements LoginListener {
         menu5 = new javax.swing.JMenu();
         menuUsuario = new javax.swing.JMenuItem();
         menuOpciones = new javax.swing.JMenuItem();
-        menuSalir = new javax.swing.JMenu();
+        menu6 = new javax.swing.JMenu();
+        menuAcerca = new javax.swing.JMenuItem();
+        menuSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE GESTION ULP");
@@ -182,13 +185,25 @@ public class Main extends javax.swing.JFrame implements LoginListener {
 
         menuBar.add(menu5);
 
-        menuSalir.setText("Salir");
-        menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuSalirMouseClicked(evt);
+        menu6.setText("Ayuda");
+
+        menuAcerca.setText("Acerca de...");
+        menuAcerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAcercaActionPerformed(evt);
             }
         });
-        menuBar.add(menuSalir);
+        menu6.add(menuAcerca);
+
+        menuSalir.setText("Salir");
+        menuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSalirActionPerformed(evt);
+            }
+        });
+        menu6.add(menuSalir);
+
+        menuBar.add(menu6);
 
         setJMenuBar(menuBar);
 
@@ -299,11 +314,27 @@ public class Main extends javax.swing.JFrame implements LoginListener {
 
     }//GEN-LAST:event_menuOpcionesActionPerformed
 
-    private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
+    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
 
-        if (menuSalir.isEnabled()) System.exit(0);
+        if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea salir del Sistema?", "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
-    }//GEN-LAST:event_menuSalirMouseClicked
+            System.exit(0);
+
+        }
+
+    }//GEN-LAST:event_menuSalirActionPerformed
+
+    private void menuAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAcercaActionPerformed
+        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        AcercaDe frmAcerca = new AcercaDe();
+        centrarInternalFrame(frmAcerca);
+        frmAcerca.setVisible(true);
+        jDesktopPane1.add(frmAcerca);
+        jDesktopPane1.moveToFront(frmAcerca);
+        
+    }//GEN-LAST:event_menuAcercaActionPerformed
 
     @Override
     public void onLoginSuccess(int idUser, String username) {
@@ -320,7 +351,7 @@ public class Main extends javax.swing.JFrame implements LoginListener {
         menu3.setEnabled(eMenu3);
         menu4.setEnabled(eMenu4);
         menu5.setEnabled(eMenu5);
-        menuSalir.setEnabled(eMenu6);
+        menu6.setEnabled(eMenu6);
 
     }
 
@@ -382,6 +413,9 @@ public class Main extends javax.swing.JFrame implements LoginListener {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                UIManager.put("OptionPane.yesButtonText", "Si");
+
                 new Main().setVisible(true);
 
             }
@@ -396,6 +430,8 @@ public class Main extends javax.swing.JFrame implements LoginListener {
     private javax.swing.JMenu menu3;
     private javax.swing.JMenu menu4;
     private javax.swing.JMenu menu5;
+    private javax.swing.JMenu menu6;
+    private javax.swing.JMenuItem menuAcerca;
     private javax.swing.JMenuItem menuAlumno;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuConsulta;
@@ -403,7 +439,7 @@ public class Main extends javax.swing.JFrame implements LoginListener {
     private javax.swing.JMenuItem menuMateria;
     private javax.swing.JMenuItem menuNotas;
     private javax.swing.JMenuItem menuOpciones;
-    private javax.swing.JMenu menuSalir;
+    private javax.swing.JMenuItem menuSalir;
     private javax.swing.JMenuItem menuUsuario;
     // End of variables declaration//GEN-END:variables
 

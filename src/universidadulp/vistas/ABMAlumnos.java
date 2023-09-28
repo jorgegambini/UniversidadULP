@@ -37,6 +37,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
         dcFNac.setDateFormatString("dd MMMM yyyy");
         dcFNac.setIcon(new ImageIcon(getClass().getResource("/icon/Calendar_16.png")));
+        setFrameIcon(new ImageIcon(getClass().getResource("/icon/logo1.png")));
 
         estado = 0;
 
@@ -418,7 +419,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
             if (ir.devolverNotaPorAlu(dni)) {
 
-                if (JOptionPane.showConfirmDialog(null, "La Alumno posee Notas en Materias Activas. Elimina?", "Eliminar Alumno", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+                if (JOptionPane.showConfirmDialog(null, "La Alumno posee Notas en Materias Activas. Elimina?", "Eliminar Alumno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
                     int result = ar.eliminarPorDNI(dni);
 
@@ -436,7 +437,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
             } else {
 
-                if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea eliminar el Alumno?", "Eliminar Alumno", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+                if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea eliminar el Alumno?", "Eliminar Alumno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
                     int result = ar.eliminarPorDNI(dni);
 

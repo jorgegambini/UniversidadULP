@@ -6,6 +6,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -28,6 +29,8 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
 
         mr = new MateriaRepositorio();
         ir = new InscripcionRepositorio();
+        
+         setFrameIcon(new ImageIcon(getClass().getResource("/icon/logo1.png")));
 
         estado = 0;
 
@@ -405,7 +408,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
 
             if (ir.devolverNotaPorMat(idCodigo)) {
 
-                if (JOptionPane.showConfirmDialog(null, "La Materia posee Notas con Alumnos Activos. Elimina?", "Eliminar Materia", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+                if (JOptionPane.showConfirmDialog(null, "La Materia posee Notas con Alumnos Activos. Elimina?", "Eliminar Materia", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
                     int result = mr.eliminarPorId(idCodigo);
 
@@ -423,7 +426,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
 
             } else {
                 
-                if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea eliminar la Materia?", "Eliminar Materia", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+                if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea eliminar la Materia?", "Eliminar Materia", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
                     
                     int result = mr.eliminarPorId(idCodigo);
 
