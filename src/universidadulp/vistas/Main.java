@@ -1,15 +1,11 @@
 package universidadulp.vistas;
 
 import java.awt.Dimension;
-import java.sql.Connection;
-import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import static universidadulp.connection.DatabaseConnection.getInstance;
 import universidadulp.entidades.TipoUsuario;
 import universidadulp.entidades.Usuario;
 import universidadulp.repositorio.TipoUsuarioRepositorio;
@@ -256,13 +252,19 @@ public class Main extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        
+       
 
     }//GEN-LAST:event_formWindowOpened
 
     private void menuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioActionPerformed
 
-        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        ABMUsuarios frmUsuarios = new ABMUsuarios();
+        centrarInternalFrame(frmUsuarios);
+        frmUsuarios.setVisible(true);
+        jDesktopPane1.add(frmUsuarios);
+        jDesktopPane1.moveToFront(frmUsuarios);
 
     }//GEN-LAST:event_menuUsuarioActionPerformed
 
@@ -283,7 +285,6 @@ public class Main extends javax.swing.JFrame {
         if (menuSalir.isEnabled()) System.exit(0);
 
     }//GEN-LAST:event_menuSalirMouseClicked
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
