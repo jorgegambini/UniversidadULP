@@ -83,7 +83,7 @@ public class ABMUsuarios extends javax.swing.JInternalFrame {
 
         cmdDelete.addActionListener((e) -> {
 
-            if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea eliminar el Usuario?", "Eliminar Usuario", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+            if (JOptionPane.showConfirmDialog(this, "Esta Seguro que desea eliminar el Usuario?", "Eliminar Usuario", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
                 int idUsuario = Integer.parseInt(txtIdUsuario.getText());
                 limpiarDatosUsuarios();
