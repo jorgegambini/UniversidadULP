@@ -1,11 +1,15 @@
 package universidadulp.vistas;
 
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import static universidadulp.connection.DatabaseConnection.getInstance;
 import universidadulp.entidades.TipoUsuario;
 import universidadulp.entidades.Usuario;
 import universidadulp.repositorio.TipoUsuarioRepositorio;
@@ -240,7 +244,13 @@ public class Main extends javax.swing.JFrame {
 
     private void menuConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaActionPerformed
 
-        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        AlumnoPorMateria frmAluxMat = new AlumnoPorMateria();
+        centrarInternalFrame(frmAluxMat);
+        frmAluxMat.setVisible(true);
+        jDesktopPane1.add(frmAluxMat);
+        jDesktopPane1.moveToFront(frmAluxMat);
 
     }//GEN-LAST:event_menuConsultaActionPerformed
 
@@ -258,7 +268,13 @@ public class Main extends javax.swing.JFrame {
 
     private void menuOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcionesActionPerformed
 
-        
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        TiposUsuario frmTUsuario = new TiposUsuario();
+        centrarInternalFrame(frmTUsuario);
+        frmTUsuario.setVisible(true);
+        jDesktopPane1.add(frmTUsuario);
+        jDesktopPane1.moveToFront(frmTUsuario);
 
     }//GEN-LAST:event_menuOpcionesActionPerformed
 
