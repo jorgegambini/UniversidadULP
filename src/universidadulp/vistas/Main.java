@@ -1,17 +1,22 @@
 package universidadulp.vistas;
 
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import static universidadulp.connection.DatabaseConnection.getInstance;
 import universidadulp.entidades.TipoUsuario;
 import universidadulp.entidades.Usuario;
+import universidadulp.event.LoginListener;
 import universidadulp.repositorio.TipoUsuarioRepositorio;
 import universidadulp.repositorio.UsuarioRepositorio;
 
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame implements LoginListener {
 
     private TipoUsuarioRepositorio tr;
     private UsuarioRepositorio ur;
@@ -39,6 +44,19 @@ public class Main extends javax.swing.JFrame {
         int x = (desktopSize.width - form.getWidth()) / 2;
         int y = (desktopSize.height - form.getHeight()) / 2;
         form.setLocation(x, y);
+
+    }
+
+    private void createLogin() {
+
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Login frmLogin = new Login();
+        frmLogin.setLoginListener((LoginListener) this);
+        centrarInternalFrame(frmLogin);
+        frmLogin.setVisible(true);
+        jDesktopPane1.add(frmLogin);
+        jDesktopPane1.moveToFront(frmLogin);
 
     }
 
@@ -252,7 +270,8 @@ public class Main extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-       
+        estadoMenus(false, false, false, false, false, false);
+        createLogin();
 
     }//GEN-LAST:event_formWindowOpened
 
@@ -285,6 +304,55 @@ public class Main extends javax.swing.JFrame {
         if (menuSalir.isEnabled()) System.exit(0);
 
     }//GEN-LAST:event_menuSalirMouseClicked
+
+    @Override
+    public void onLoginSuccess(int idUser, String username) {
+
+        setTitle(getTitle() + " - USUARIO: " + username);
+        idSystemUser = idUser;
+
+    }
+
+    private void estadoMenus(boolean eMenu1, boolean eMenu2, boolean eMenu3, boolean eMenu4, boolean eMenu5, boolean eMenu6) {
+
+        menu1.setEnabled(eMenu1);
+        menu2.setEnabled(eMenu2);
+        menu3.setEnabled(eMenu3);
+        menu4.setEnabled(eMenu4);
+        menu5.setEnabled(eMenu5);
+        menuSalir.setEnabled(eMenu6);
+
+    }
+
+    @Override
+    public void onMethodExecution() {
+
+        try (Connection conn = getInstance();) {
+
+            user = ur.buscarPorId(idSystemUser);
+
+            userType = tr.buscarPorId(user.getTipoUsuario().getIdTipoUsuario());
+
+        } catch (SQLException ex) {
+
+            JOptionPane.showConfirmDialog(this, ex.getMessage(), "Error", JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (userType.isAdmin()) {
+
+            estadoMenus(true, true, true, true, true, true);
+
+        } else if (userType.isCrud()) {
+
+            estadoMenus(true, true, true, false, false, true);
+
+        } else if (userType.isQueries()) {
+
+            estadoMenus(false, false, false, true, false, true);
+
+        }
+
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
